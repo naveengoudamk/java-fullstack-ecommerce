@@ -3,7 +3,7 @@ body {
     text-align: center;
 }
 
-.product {
+.product, .form-box {
     border: 1px solid #ccc;
     padding: 20px;
     margin: 20px auto;
@@ -17,4 +17,9 @@ button {
     padding: 8px 15px;
     border: none;
     cursor: pointer;
+}
+
+input {
+    padding: 8px;
+    width: 90%;
 }

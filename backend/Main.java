@@ -1,18 +1,59 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
 
+        Scanner sc = new Scanner(System.in);
+
         User user = new User("Navi");
         user.greetUser();
 
-        Product p1 = new Product(1, "Laptop", 55000);
-        Product p2 = new Product(2, "Phone", 20000);
+        ProductService productService = new ProductService();
+        ArrayList<Product> products = productService.getProducts();
 
         Cart cart = new Cart();
 
-        cart.addProduct(p1);
-        cart.addProduct(p2);
+        while (true) {
 
-        cart.showCart();
+            System.out.println("\n1. View Products");
+            System.out.println("2. Add Product to Cart");
+            System.out.println("3. View Cart");
+            System.out.println("4. Exit");
+            System.out.print("Enter choice: ");
+
+            int choice = sc.nextInt();
+
+            switch (choice) {
+
+                case 1:
+                    productService.displayProducts(products);
+                    break;
+
+                case 2:
+                    System.out.print("Enter product ID: ");
+                    int id = sc.nextInt();
+
+                    if (id > 0 && id <= products.size()) {
+                        cart.addProduct(products.get(id - 1));
+                    } else {
+                        System.out.println("Invalid product ID");
+                    }
+                    break;
+
+                case 3:
+                    cart.showCart();
+                    break;
+
+                case 4:
+                    System.out.println("Thank you for visiting!");
+                    sc.close();
+                    return;
+
+                default:
+                    System.out.println("Invalid choice");
+            }
+        }
     }
 }
