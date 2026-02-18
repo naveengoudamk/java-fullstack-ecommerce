@@ -1,24 +1,88 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>E-Commerce Home</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaCart | Smart Online Shopping</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
 </head>
-<body>
+<body class="page-home">
+    <header class="site-header">
+        <a href="index.html" class="brand">NovaCart</a>
+        <nav class="nav-links">
+            <a class="active-link" href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="login.html">Login</a>
+        </nav>
+        <a href="products.html#catalog" class="cart-pill">Cart <span data-cart-count>0</span></a>
+    </header>
 
-    <h1>Welcome to My E-Commerce Store</h1>
+    <main class="main-layout">
+        <section class="hero">
+            <div class="hero-copy">
+                <p class="eyebrow">LIMITED DEALS | FAST DELIVERY</p>
+                <h1>Shopping that feels modern, quick, and effortless.</h1>
+                <p>Browse high-quality products with a fast interface, clean design, and instant cart updates.</p>
+                <div class="hero-actions">
+                    <a href="products.html" class="btn-primary">Shop Now</a>
+                    <a href="login.html" class="btn-secondary">Member Login</a>
+                </div>
+            </div>
 
-    <div class="product">
-        <h2>Laptop</h2>
-        <p>Price: ₹55,000</p>
-        <button>Add to Cart</button>
-    </div>
-q
-    <div class="product">
-        <h2>Phone</h2>
-        <p>Price: ₹20,000</p>
-        <button>Add to Cart</button>
-    </div>
+            <aside class="hero-panel">
+                <h2>Store Insights</h2>
+                <div class="metric-grid">
+                    <article class="metric-card">
+                        <h3>1200+</h3>
+                        <p>Orders Completed</p>
+                    </article>
+                    <article class="metric-card">
+                        <h3>4.9/5</h3>
+                        <p>Average Rating</p>
+                    </article>
+                    <article class="metric-card">
+                        <h3>24h</h3>
+                        <p>Express Shipping</p>
+                    </article>
+                </div>
+            </aside>
+        </section>
 
+        <section class="section-block">
+            <div class="section-head">
+                <h2>Why customers choose NovaCart</h2>
+            </div>
+            <div class="feature-grid">
+                <article class="feature-card">
+                    <h3>Performance First</h3>
+                    <p>Optimized layout and scripts for quick page interactions on desktop and mobile.</p>
+                </article>
+                <article class="feature-card">
+                    <h3>Clean Experience</h3>
+                    <p>Simple navigation, structured product filters, and transparent pricing.</p>
+                </article>
+                <article class="feature-card">
+                    <h3>Smart Cart</h3>
+                    <p>Persistent cart state keeps selections available even after refresh.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section-block">
+            <div class="section-head">
+                <h2>Trending products</h2>
+                <a href="products.html" class="inline-link">View full catalog</a>
+            </div>
+            <div id="featured-products" class="product-grid compact-grid"></div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>NovaCart | Secure checkout | Friendly support</p>
+    </footer>
 </body>
 </html>

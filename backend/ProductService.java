@@ -1,14 +1,23 @@
-import java.util.ArrayList;
+import java.util.List;
 
 public class ProductService {
 
-    ProductDAO productDAO = new ProductDAO();
+    private final ProductDAO productDAO;
 
-    public ArrayList<Product> getProducts() {
+    public ProductService() {
+        this.productDAO = new ProductDAO();
+    }
+
+    public List<Product> getProducts() {
         return productDAO.getAllProducts();
     }
 
-    public void displayProducts(ArrayList<Product> products) {
+    public void displayProducts(List<Product> products) {
+        if (products.isEmpty()) {
+            System.out.println("No products are available right now.");
+            return;
+        }
+
         System.out.println("Available Products:");
         for (Product p : products) {
             p.displayProduct();

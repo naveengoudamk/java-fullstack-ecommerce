@@ -1,4 +1,6 @@
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
@@ -11,7 +13,8 @@ public class Main {
         user.greetUser();
 
         ProductService productService = new ProductService();
-        ArrayList<Product> products = productService.getProducts();
+        List<Product> products = productService.getProducts();
+        Map<Integer, Product> productById = indexProducts(products);
 
         Cart cart = new Cart();
 
@@ -23,7 +26,7 @@ public class Main {
             System.out.println("4. Exit");
             System.out.print("Enter choice: ");
 
-            int choice = sc.nextInt();
+            int choice = readInteger(sc);
 
             switch (choice) {
 
@@ -32,11 +35,17 @@ public class Main {
                     break;
 
                 case 2:
-                    System.out.print("Enter product ID: ");
-                    int id = sc.nextInt();
+                    if (products.isEmpty()) {
+                        System.out.println("No products available to add.");
+                        break;
+                    }
 
-                    if (id > 0 && id <= products.size()) {
-                        cart.addProduct(products.get(id - 1));
+                    System.out.print("Enter product ID: ");
+                    int id = readInteger(sc);
+                    Product selectedProduct = productById.get(id);
+
+                    if (selectedProduct != null) {
+                        cart.addProduct(selectedProduct);
                     } else {
                         System.out.println("Invalid product ID");
                     }
@@ -55,5 +64,24 @@ public class Main {
                     System.out.println("Invalid choice");
             }
         }
+    }
+
+    private static int readInteger(Scanner scanner) {
+        while (true) {
+            String input = scanner.nextLine().trim();
+            try {
+                return Integer.parseInt(input);
+            } catch (NumberFormatException e) {
+                System.out.print("Please enter a valid number: ");
+            }
+        }
+    }
+
+    private static Map<Integer, Product> indexProducts(List<Product> products) {
+        Map<Integer, Product> productById = new HashMap<>();
+        for (Product product : products) {
+            productById.put(product.getId(), product);
+        }
+        return productById;
     }
 }

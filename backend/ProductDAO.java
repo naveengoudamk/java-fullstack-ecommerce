@@ -1,31 +1,33 @@
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ProductDAO {
 
-    public ArrayList<Product> getAllProducts() {
+    private static final String FETCH_PRODUCTS_QUERY = "SELECT id, name, price FROM products";
 
-        ArrayList<Product> products = new ArrayList<>();
+    public List<Product> getAllProducts() {
+        List<Product> products = new ArrayList<>();
 
-        try {
-            Connection con = DBConnection.getConnection();
-
-            String query = "SELECT * FROM products";
-            PreparedStatement ps = con.prepareStatement(query);
-            ResultSet rs = ps.executeQuery();
+        try (
+                Connection con = DBConnection.getConnection();
+                PreparedStatement ps = con.prepareStatement(FETCH_PRODUCTS_QUERY);
+                ResultSet rs = ps.executeQuery()
+        ) {
 
             while (rs.next()) {
-                Product p = new Product(
+                products.add(new Product(
                         rs.getInt("id"),
                         rs.getString("name"),
                         rs.getDouble("price")
-                );
-                products.add(p);
+                ));
             }
 
-        } catch (Exception e) {
+        } catch (SQLException e) {
+            System.out.println("Unable to fetch products from database.");
             e.printStackTrace();
         }
 
