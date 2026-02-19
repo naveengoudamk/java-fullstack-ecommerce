@@ -43,6 +43,22 @@ function getProductById(id) {
     return PRODUCTS.find((product) => product.id === id);
 }
 
+function formatLabel(value) {
+    return String(value)
+        .replace(/[-_]+/g, " ")
+        .replace(/\b\w/g, (char) => char.toUpperCase());
+}
+
+function getInitials(name) {
+    return name
+        .split(/\s+/)
+        .filter(Boolean)
+        .slice(0, 2)
+        .map((word) => word[0])
+        .join("")
+        .toUpperCase();
+}
+
 function addToCart(productId) {
     const cart = getCart();
     const key = String(productId);
@@ -68,12 +84,20 @@ function removeFromCart(productId) {
 }
 
 function createProductCard(product) {
+    const initials = getInitials(product.name);
+    const categoryLabel = formatLabel(product.category);
     const card = document.createElement("article");
     card.className = "product-card fade-in";
     card.innerHTML = `
-        <span class="tag">${product.tag}</span>
-        <h3>${product.name}</h3>
-        <p class="rating">Category: ${product.category} | Rating: ${product.rating}</p>
+        <div class="product-visual ${product.category}">
+            <span class="tag">${product.tag}</span>
+            <span class="visual-initial">${initials}</span>
+        </div>
+        <div class="product-head">
+            <h3>${product.name}</h3>
+            <span class="rating-pill">&#9733; ${product.rating}</span>
+        </div>
+        <p class="rating">${categoryLabel}</p>
         <div class="product-meta">
             <span class="price">${currencyFormatter.format(product.price)}</span>
             <button class="btn-primary" type="button" data-product-id="${product.id}">Add to Cart</button>
