@@ -22,6 +22,11 @@
     </header>
 
     <main id="catalog" class="main-layout catalog-layout">
+        <section class="deal-banner">
+            <p class="deal-title">Deal of the Day</p>
+            <p>Use code <strong>NOVA10</strong> for extra savings. Offer ends in <strong id="deal-countdown">--:--:--</strong></p>
+        </section>
+
         <section class="section-block catalog-tools">
             <div class="section-head">
                 <h1>Find products faster</h1>
@@ -50,7 +55,26 @@
                         <option value="price-low">Price: Low to High</option>
                         <option value="price-high">Price: High to Low</option>
                         <option value="rating-high">Rating</option>
+                        <option value="discount-high">Best Discount</option>
                     </select>
+                </label>
+
+                <label class="field">
+                    Max price
+                    <select id="price-filter">
+                        <option value="0">Any</option>
+                        <option value="10000">Under INR 10,000</option>
+                        <option value="20000">Under INR 20,000</option>
+                        <option value="50000">Under INR 50,000</option>
+                    </select>
+                </label>
+
+                <label class="field checkbox-field">
+                    <span>Availability</span>
+                    <span class="checkbox-wrap">
+                        <input id="stock-filter" type="checkbox">
+                        In stock only
+                    </span>
                 </label>
             </div>
 
@@ -66,9 +90,41 @@
             <aside id="cart-panel" class="cart-panel">
                 <h2>Cart Summary</h2>
                 <ul id="cart-items" class="cart-items"></ul>
-                <div class="cart-total">
-                    <span>Total</span>
-                    <strong id="cart-total-value">INR 0</strong>
+
+                <p id="shipping-note" class="cart-note">Add items to unlock free shipping.</p>
+
+                <div class="promo-box">
+                    <label class="field promo-field">
+                        Promo code
+                        <div class="promo-group">
+                            <input id="promo-input" type="text" placeholder="Enter code">
+                            <button id="apply-promo" class="btn-secondary" type="button">Apply</button>
+                        </div>
+                    </label>
+                    <p id="promo-message" class="promo-message" aria-live="polite"></p>
+                </div>
+
+                <div class="bill-breakdown">
+                    <div class="bill-row">
+                        <span>Subtotal</span>
+                        <strong id="cart-subtotal-value">INR 0</strong>
+                    </div>
+                    <div class="bill-row">
+                        <span>Discount</span>
+                        <strong id="cart-discount-value">INR 0</strong>
+                    </div>
+                    <div class="bill-row">
+                        <span>Shipping</span>
+                        <strong id="cart-shipping-value">INR 0</strong>
+                    </div>
+                    <div class="bill-row">
+                        <span>Tax</span>
+                        <strong id="cart-tax-value">INR 0</strong>
+                    </div>
+                    <div class="bill-row total">
+                        <span>Total</span>
+                        <strong id="cart-total-value">INR 0</strong>
+                    </div>
                 </div>
                 <button id="checkout-button" class="btn-primary" type="button">Checkout</button>
             </aside>
