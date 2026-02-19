@@ -651,6 +651,17 @@ select:focus {
     font-weight: 600;
 }
 
+.bulky-badge {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    padding: 3px 9px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #5f4a16;
+    background: rgba(245, 201, 80, 0.28);
+}
+
 .price-stack {
     display: flex;
     flex-direction: column;

@@ -70,6 +70,83 @@ const PRODUCTS = [
         tag: "Healthy Home",
         stock: 3,
         etaDays: 1
+    },
+    {
+        id: 7,
+        name: "MegaView 55 4K Smart TV",
+        category: "electronics",
+        price: 45999,
+        mrp: 59999,
+        rating: 4.7,
+        reviews: 975,
+        tag: "Festival Deal",
+        stock: 5,
+        etaDays: 2,
+        bulky: true
+    },
+    {
+        id: 8,
+        name: "FrostMax Double-Door Refrigerator",
+        category: "home",
+        price: 52999,
+        mrp: 62999,
+        rating: 4.6,
+        reviews: 742,
+        tag: "Large Item",
+        stock: 2,
+        etaDays: 3,
+        bulky: true
+    },
+    {
+        id: 9,
+        name: "WashPro Front-Load Washing Machine",
+        category: "home",
+        price: 33999,
+        mrp: 42999,
+        rating: 4.5,
+        reviews: 658,
+        tag: "Home Upgrade",
+        stock: 4,
+        etaDays: 3,
+        bulky: true
+    },
+    {
+        id: 10,
+        name: "FamilyLounge 3-Seater Sofa",
+        category: "home",
+        price: 27999,
+        mrp: 35999,
+        rating: 4.4,
+        reviews: 430,
+        tag: "Space Saver",
+        stock: 3,
+        etaDays: 4,
+        bulky: true
+    },
+    {
+        id: 11,
+        name: "CoolBreeze 1.5T Inverter AC",
+        category: "home",
+        price: 38999,
+        mrp: 46999,
+        rating: 4.6,
+        reviews: 890,
+        tag: "Summer Pick",
+        stock: 6,
+        etaDays: 2,
+        bulky: true
+    },
+    {
+        id: 12,
+        name: "CineSound Home Theatre",
+        category: "electronics",
+        price: 18999,
+        mrp: 24999,
+        rating: 4.5,
+        reviews: 566,
+        tag: "Movie Night",
+        stock: 9,
+        etaDays: 2
     }
 ];
 
@@ -212,7 +289,11 @@ function getStockMeta(stock) {
     };
 }
 
-function getDeliveryLabel(etaDays) {
+function getDeliveryLabel(etaDays, bulky = false) {
+    if (bulky) {
+        return `Large-item delivery in ${etaDays} days`;
+    }
+
     if (etaDays <= 1) {
         return "Delivery by tomorrow";
     }
@@ -399,7 +480,8 @@ function createProductCard(product) {
         <p class="rating">${categoryLabel}</p>
         <div class="product-extra">
             <span class="stock-status ${stockMeta.className}">${stockMeta.label}</span>
-            <span class="delivery-note">${getDeliveryLabel(product.etaDays)}</span>
+            <span class="delivery-note">${getDeliveryLabel(product.etaDays, Boolean(product.bulky))}</span>
+            ${product.bulky ? '<span class="bulky-badge">Large Delivery</span>' : ""}
         </div>
         <div class="product-meta">
             <div class="price-stack">
