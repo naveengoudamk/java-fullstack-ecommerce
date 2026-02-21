@@ -8,13 +8,36 @@
 </head>
 <body class="page-login">
     <header class="site-header">
-        <a href="index.html" class="brand">NovaCart</a>
-        <nav class="nav-links">
+        <div class="header-top">
+            <a href="index.html" class="brand">NovaCart</a>
+            <a href="products.html#catalog" class="location-pill">
+                <span class="location-label">Deliver to</span>
+                <strong>Bengaluru 560001</strong>
+            </a>
+            <form class="global-search" data-global-search>
+                <select class="search-scope" name="scope" aria-label="Search category">
+                    <option value="all">All</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="accessories">Accessories</option>
+                    <option value="home">Home</option>
+                </select>
+                <input type="search" name="q" placeholder="Search for products, brands and more" aria-label="Search products">
+                <button type="submit" class="search-btn">Search</button>
+            </form>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="products.html">Products</a>
+                <a class="active-link" href="login.html">Login</a>
+            </nav>
+            <a href="products.html#cart-panel" class="cart-pill">Cart <span data-cart-count>0</span></a>
+        </div>
+        <nav class="category-bar">
             <a href="index.html">Home</a>
-            <a href="products.html">Products</a>
-            <a class="active-link" href="login.html">Login</a>
+            <a href="products.html">Top Deals</a>
+            <a href="products.html?category=electronics">Electronics</a>
+            <a href="products.html?category=home">Home</a>
+            <a class="active-link" href="login.html">Account</a>
         </nav>
-        <a href="products.html#cart-panel" class="cart-pill">Cart <span data-cart-count>0</span></a>
     </header>
 
     <main class="main-layout auth-layout">
@@ -38,7 +61,7 @@
                 </label>
 
                 <button class="btn-primary full-width" type="submit">Login</button>
-                <button style=" text-align: center;"> register</button>
+                <button class="btn-secondary full-width" type="button">Create Account</button>
                 <p id="login-message" class="form-message" aria-live="polite"></p>
             </form>
 

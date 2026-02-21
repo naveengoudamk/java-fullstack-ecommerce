@@ -8,13 +8,37 @@
 </head>
 <body class="page-home">
     <header class="site-header">
-        <a href="index.html" class="brand">NovaCart</a>
-        <nav class="nav-links">
+        <div class="header-top">
+            <a href="index.html" class="brand">NovaCart</a>
+            <a href="products.html#catalog" class="location-pill">
+                <span class="location-label">Deliver to</span>
+                <strong>Bengaluru 560001</strong>
+            </a>
+            <form class="global-search" data-global-search>
+                <select class="search-scope" name="scope" aria-label="Search category">
+                    <option value="all">All</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="accessories">Accessories</option>
+                    <option value="home">Home</option>
+                </select>
+                <input type="search" name="q" placeholder="Search for products, brands and more" aria-label="Search products">
+                <button type="submit" class="search-btn">Search</button>
+            </form>
+            <nav class="nav-links">
+                <a class="active-link" href="index.html">Home</a>
+                <a href="products.html">Products</a>
+                <a href="login.html">Login</a>
+            </nav>
+            <a href="products.html#cart-panel" class="cart-pill">Cart <span data-cart-count>0</span></a>
+        </div>
+        <nav class="category-bar">
             <a class="active-link" href="index.html">Home</a>
-            <a href="products.html">Products</a>
-            <a href="login.html">Login</a>
+            <a href="products.html?category=electronics">Mobiles & Electronics</a>
+            <a href="products.html?category=accessories">Fashion & Accessories</a>
+            <a href="products.html?category=home">Home Appliances</a>
+            <a href="products.html?sort=discount-high">Top Deals</a>
+            <a href="products.html?stock=1">Fast Delivery</a>
         </nav>
-        <a href="products.html#catalog" class="cart-pill">Cart <span data-cart-count>0</span></a>
     </header>
 
     <main class="main-layout">
