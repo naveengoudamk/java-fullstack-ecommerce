@@ -524,12 +524,11 @@ select:focus {
 }
 
 .product-visual {
-    min-height: 84px;
+    min-height: 160px;
     border-radius: 14px;
-    padding: 10px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
+    padding: 8px;
+    position: relative;
+    overflow: hidden;
     border: 1px solid rgba(91, 124, 187, 0.22);
     background: linear-gradient(135deg, #edf5ff, #f7fcff);
 }
@@ -546,15 +545,52 @@ select:focus {
     background: linear-gradient(140deg, #e9f9f5, #f3fff8);
 }
 
+.product-visual.fashion {
+    background: linear-gradient(140deg, #fff1f8, #fff9fc);
+}
+
+.product-visual.beauty {
+    background: linear-gradient(140deg, #ffeef2, #fff9fb);
+}
+
+.product-visual.grocery {
+    background: linear-gradient(140deg, #edf8e9, #f8fff4);
+}
+
+.product-visual.toys {
+    background: linear-gradient(140deg, #fff7de, #fffef5);
+}
+
+.product-visual.sports {
+    background: linear-gradient(140deg, #eaf4ff, #f4f9ff);
+}
+
+.product-visual.books {
+    background: linear-gradient(140deg, #f0ecff, #f8f6ff);
+}
+
+.product-visual.automotive {
+    background: linear-gradient(140deg, #edf0f7, #f8f9ff);
+}
+
+.product-photo {
+    width: 100%;
+    height: 142px;
+    border-radius: 10px;
+    object-fit: cover;
+    display: block;
+    border: 1px solid rgba(90, 121, 182, 0.22);
+}
+
 .visual-initial {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
-    width: 38px;
-    height: 38px;
+    width: 100%;
+    height: 142px;
     border-radius: 11px;
     font-family: "Sora", sans-serif;
-    font-size: 0.9rem;
+    font-size: 2rem;
     font-weight: 700;
     background: rgba(255, 255, 255, 0.8);
     color: var(--text-strong);
@@ -569,10 +605,14 @@ select:focus {
 }
 
 .tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 2;
     display: inline-flex;
     border-radius: 999px;
-    background: var(--accent-soft);
-    color: #a85a28;
+    background: rgba(12, 37, 83, 0.86);
+    color: #ffffff;
     padding: 4px 10px;
     font-size: 0.74rem;
     font-weight: 700;

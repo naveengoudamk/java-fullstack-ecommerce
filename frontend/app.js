@@ -525,12 +525,11 @@ select:focus {
 }
 
 .product-visual {
-    min-height: 84px;
+    min-height: 160px;
     border-radius: 14px;
-    padding: 10px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
+    padding: 8px;
+    position: relative;
+    overflow: hidden;
     border: 1px solid rgba(91, 124, 187, 0.22);
     background: linear-gradient(135deg, #edf5ff, #f7fcff);
 }
@@ -547,15 +546,52 @@ select:focus {
     background: linear-gradient(140deg, #e9f9f5, #f3fff8);
 }
 
+.product-visual.fashion {
+    background: linear-gradient(140deg, #fff1f8, #fff9fc);
+}
+
+.product-visual.beauty {
+    background: linear-gradient(140deg, #ffeef2, #fff9fb);
+}
+
+.product-visual.grocery {
+    background: linear-gradient(140deg, #edf8e9, #f8fff4);
+}
+
+.product-visual.toys {
+    background: linear-gradient(140deg, #fff7de, #fffef5);
+}
+
+.product-visual.sports {
+    background: linear-gradient(140deg, #eaf4ff, #f4f9ff);
+}
+
+.product-visual.books {
+    background: linear-gradient(140deg, #f0ecff, #f8f6ff);
+}
+
+.product-visual.automotive {
+    background: linear-gradient(140deg, #edf0f7, #f8f9ff);
+}
+
+.product-photo {
+    width: 100%;
+    height: 142px;
+    border-radius: 10px;
+    object-fit: cover;
+    display: block;
+    border: 1px solid rgba(90, 121, 182, 0.22);
+}
+
 .visual-initial {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
-    width: 38px;
-    height: 38px;
+    width: 100%;
+    height: 142px;
     border-radius: 11px;
     font-family: "Sora", sans-serif;
-    font-size: 0.9rem;
+    font-size: 2rem;
     font-weight: 700;
     background: rgba(255, 255, 255, 0.8);
     color: var(--text-strong);
@@ -570,10 +606,14 @@ select:focus {
 }
 
 .tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 2;
     display: inline-flex;
     border-radius: 999px;
-    background: var(--accent-soft);
-    color: #a85a28;
+    background: rgba(12, 37, 83, 0.86);
+    color: #ffffff;
     padding: 4px 10px;
     font-size: 0.74rem;
     font-weight: 700;
@@ -1364,7 +1404,8 @@ const PRODUCTS = [
         reviews: 1860,
         tag: "Top Seller",
         stock: 6,
-        etaDays: 1
+        etaDays: 1,
+        image: "https://loremflickr.com/640/480/laptop?lock=101"
     },
     {
         id: 2,
@@ -1376,58 +1417,37 @@ const PRODUCTS = [
         reviews: 2410,
         tag: "New Arrival",
         stock: 11,
-        etaDays: 1
+        etaDays: 1,
+        image: "https://loremflickr.com/640/480/smartphone?lock=102"
     },
     {
         id: 3,
-        name: "Noise-Cancel Headphones",
-        category: "accessories",
-        price: 6999,
-        mrp: 9999,
+        name: "Quantum Gaming Console",
+        category: "electronics",
+        price: 42999,
+        mrp: 48999,
         rating: 4.6,
-        reviews: 3912,
-        tag: "Best Value",
-        stock: 0,
-        etaDays: 2
+        reviews: 834,
+        tag: "Gamer Pick",
+        stock: 7,
+        etaDays: 2,
+        image: "https://loremflickr.com/640/480/gaming?lock=103"
     },
     {
         id: 4,
-        name: "Smart Fitness Watch",
-        category: "accessories",
-        price: 8499,
-        mrp: 11999,
-        rating: 4.5,
-        reviews: 1640,
-        tag: "Trending",
-        stock: 4,
-        etaDays: 2
+        name: "PixelTab 11",
+        category: "electronics",
+        price: 22999,
+        mrp: 27999,
+        rating: 4.4,
+        reviews: 690,
+        tag: "Productive",
+        stock: 10,
+        etaDays: 1,
+        image: "https://loremflickr.com/640/480/tablet?lock=104"
     },
     {
         id: 5,
-        name: "Ergo Office Chair",
-        category: "home",
-        price: 12999,
-        mrp: 16999,
-        rating: 4.4,
-        reviews: 1320,
-        tag: "Comfort",
-        stock: 8,
-        etaDays: 3
-    },
-    {
-        id: 6,
-        name: "Air Purifier Max",
-        category: "home",
-        price: 10999,
-        mrp: 14999,
-        rating: 4.6,
-        reviews: 1575,
-        tag: "Healthy Home",
-        stock: 3,
-        etaDays: 1
-    },
-    {
-        id: 7,
         name: "MegaView 55 4K Smart TV",
         category: "electronics",
         price: 45999,
@@ -1437,10 +1457,102 @@ const PRODUCTS = [
         tag: "Festival Deal",
         stock: 5,
         etaDays: 2,
-        bulky: true
+        bulky: true,
+        image: "https://loremflickr.com/640/480/television?lock=105"
+    },
+    {
+        id: 6,
+        name: "CineSound Home Theatre",
+        category: "electronics",
+        price: 18999,
+        mrp: 24999,
+        rating: 4.5,
+        reviews: 566,
+        tag: "Movie Night",
+        stock: 9,
+        etaDays: 2,
+        image: "https://loremflickr.com/640/480/speaker?lock=106"
+    },
+    {
+        id: 7,
+        name: "Noise-Cancel Headphones",
+        category: "accessories",
+        price: 6999,
+        mrp: 9999,
+        rating: 4.6,
+        reviews: 3912,
+        tag: "Best Value",
+        stock: 12,
+        etaDays: 2,
+        image: "https://loremflickr.com/640/480/headphones?lock=107"
     },
     {
         id: 8,
+        name: "Smart Fitness Watch",
+        category: "accessories",
+        price: 8499,
+        mrp: 11999,
+        rating: 4.5,
+        reviews: 1640,
+        tag: "Trending",
+        stock: 4,
+        etaDays: 2,
+        image: "https://loremflickr.com/640/480/smartwatch?lock=108"
+    },
+    {
+        id: 9,
+        name: "AeroBuds Wireless Earbuds",
+        category: "accessories",
+        price: 3499,
+        mrp: 4999,
+        rating: 4.4,
+        reviews: 2150,
+        tag: "Pocket Audio",
+        stock: 15,
+        etaDays: 1,
+        image: "https://loremflickr.com/640/480/earbuds?lock=109"
+    },
+    {
+        id: 10,
+        name: "Laptop Backpack Pro",
+        category: "accessories",
+        price: 2499,
+        mrp: 3499,
+        rating: 4.5,
+        reviews: 920,
+        tag: "Daily Carry",
+        stock: 18,
+        etaDays: 2,
+        image: "https://loremflickr.com/640/480/backpack?lock=110"
+    },
+    {
+        id: 11,
+        name: "Ergo Office Chair",
+        category: "home",
+        price: 12999,
+        mrp: 16999,
+        rating: 4.4,
+        reviews: 1320,
+        tag: "Comfort",
+        stock: 8,
+        etaDays: 3,
+        image: "https://loremflickr.com/640/480/office?lock=111"
+    },
+    {
+        id: 12,
+        name: "Air Purifier Max",
+        category: "home",
+        price: 10999,
+        mrp: 14999,
+        rating: 4.6,
+        reviews: 1575,
+        tag: "Healthy Home",
+        stock: 3,
+        etaDays: 1,
+        image: "https://loremflickr.com/640/480/purifier?lock=112"
+    },
+    {
+        id: 13,
         name: "FrostMax Double-Door Refrigerator",
         category: "home",
         price: 52999,
@@ -1450,10 +1562,11 @@ const PRODUCTS = [
         tag: "Large Item",
         stock: 2,
         etaDays: 3,
-        bulky: true
+        bulky: true,
+        image: "https://loremflickr.com/640/480/refrigerator?lock=113"
     },
     {
-        id: 9,
+        id: 14,
         name: "WashPro Front-Load Washing Machine",
         category: "home",
         price: 33999,
@@ -1463,10 +1576,11 @@ const PRODUCTS = [
         tag: "Home Upgrade",
         stock: 4,
         etaDays: 3,
-        bulky: true
+        bulky: true,
+        image: "https://loremflickr.com/640/480/laundry?lock=114"
     },
     {
-        id: 10,
+        id: 15,
         name: "FamilyLounge 3-Seater Sofa",
         category: "home",
         price: 27999,
@@ -1476,10 +1590,11 @@ const PRODUCTS = [
         tag: "Space Saver",
         stock: 3,
         etaDays: 4,
-        bulky: true
+        bulky: true,
+        image: "https://loremflickr.com/640/480/sofa?lock=115"
     },
     {
-        id: 11,
+        id: 16,
         name: "CoolBreeze 1.5T Inverter AC",
         category: "home",
         price: 38999,
@@ -1489,21 +1604,311 @@ const PRODUCTS = [
         tag: "Summer Pick",
         stock: 6,
         etaDays: 2,
-        bulky: true
+        bulky: true,
+        image: "https://loremflickr.com/640/480/ac?lock=116"
     },
     {
-        id: 12,
-        name: "CineSound Home Theatre",
-        category: "electronics",
-        price: 18999,
-        mrp: 24999,
+        id: 17,
+        name: "Urban Sprint Sneakers",
+        category: "fashion",
+        price: 2999,
+        mrp: 4499,
         rating: 4.5,
-        reviews: 566,
-        tag: "Movie Night",
+        reviews: 1420,
+        tag: "Daily Wear",
+        stock: 22,
+        etaDays: 2,
+        image: "https://loremflickr.com/640/480/sneakers?lock=117"
+    },
+    {
+        id: 18,
+        name: "Classic Denim Jacket",
+        category: "fashion",
+        price: 3599,
+        mrp: 4999,
+        rating: 4.3,
+        reviews: 780,
+        tag: "Street Style",
+        stock: 14,
+        etaDays: 2,
+        image: "https://loremflickr.com/640/480/denim?lock=118"
+    },
+    {
+        id: 19,
+        name: "Womens Ethnic Kurti Set",
+        category: "fashion",
+        price: 1799,
+        mrp: 2699,
+        rating: 4.5,
+        reviews: 1230,
+        tag: "Festive Pick",
+        stock: 18,
+        etaDays: 2,
+        image: "https://loremflickr.com/640/480/dress?lock=119"
+    },
+    {
+        id: 20,
+        name: "Premium Cotton T-Shirts Pack",
+        category: "fashion",
+        price: 1499,
+        mrp: 2199,
+        rating: 4.4,
+        reviews: 960,
+        tag: "Best Combo",
+        stock: 26,
+        etaDays: 1,
+        image: "https://loremflickr.com/640/480/tshirt?lock=120"
+    },
+    {
+        id: 21,
+        name: "Vitamin C Face Serum",
+        category: "beauty",
+        price: 799,
+        mrp: 1299,
+        rating: 4.5,
+        reviews: 2120,
+        tag: "Skin Care",
+        stock: 35,
+        etaDays: 1,
+        image: "https://loremflickr.com/640/480/serum?lock=121"
+    },
+    {
+        id: 22,
+        name: "Matte Lipstick Combo",
+        category: "beauty",
+        price: 999,
+        mrp: 1499,
+        rating: 4.4,
+        reviews: 1740,
+        tag: "Makeup Deal",
+        stock: 28,
+        etaDays: 1,
+        image: "https://loremflickr.com/640/480/lipstick?lock=122"
+    },
+    {
+        id: 23,
+        name: "Ionic Hair Dryer",
+        category: "beauty",
+        price: 1899,
+        mrp: 2699,
+        rating: 4.3,
+        reviews: 640,
+        tag: "Salon At Home",
+        stock: 12,
+        etaDays: 2,
+        image: "https://loremflickr.com/640/480/hairdryer?lock=123"
+    },
+    {
+        id: 24,
+        name: "Organic Basmati Rice 5kg",
+        category: "grocery",
+        price: 649,
+        mrp: 899,
+        rating: 4.6,
+        reviews: 3200,
+        tag: "Daily Essential",
+        stock: 50,
+        etaDays: 1,
+        image: "https://loremflickr.com/640/480/rice?lock=124"
+    },
+    {
+        id: 25,
+        name: "Cold Pressed Olive Oil 1L",
+        category: "grocery",
+        price: 799,
+        mrp: 1099,
+        rating: 4.5,
+        reviews: 1450,
+        tag: "Healthy Choice",
+        stock: 30,
+        etaDays: 1,
+        image: "https://loremflickr.com/640/480/oliveoil?lock=125"
+    },
+    {
+        id: 26,
+        name: "Premium Almonds 1kg",
+        category: "grocery",
+        price: 999,
+        mrp: 1399,
+        rating: 4.6,
+        reviews: 1680,
+        tag: "High Protein",
+        stock: 21,
+        etaDays: 1,
+        image: "https://loremflickr.com/640/480/almonds?lock=126"
+    },
+    {
+        id: 27,
+        name: "Instant Coffee Gold Blend",
+        category: "grocery",
+        price: 449,
+        mrp: 649,
+        rating: 4.4,
+        reviews: 2100,
+        tag: "Morning Boost",
+        stock: 40,
+        etaDays: 1,
+        image: "https://loremflickr.com/640/480/coffee?lock=127"
+    },
+    {
+        id: 28,
+        name: "STEM Robotics Kit",
+        category: "toys",
+        price: 2499,
+        mrp: 3499,
+        rating: 4.4,
+        reviews: 520,
+        tag: "Learning Toy",
+        stock: 0,
+        etaDays: 3,
+        image: "https://loremflickr.com/640/480/robot?lock=128"
+    },
+    {
+        id: 29,
+        name: "Remote Control Monster Truck",
+        category: "toys",
+        price: 1899,
+        mrp: 2799,
+        rating: 4.5,
+        reviews: 730,
+        tag: "Kids Favorite",
         stock: 9,
-        etaDays: 2
+        etaDays: 2,
+        image: "https://loremflickr.com/640/480/truck?lock=129"
+    },
+    {
+        id: 30,
+        name: "Creative Building Blocks 500",
+        category: "toys",
+        price: 1399,
+        mrp: 1999,
+        rating: 4.6,
+        reviews: 910,
+        tag: "Creative Play",
+        stock: 16,
+        etaDays: 2,
+        image: "https://loremflickr.com/640/480/blocks?lock=130"
+    },
+    {
+        id: 31,
+        name: "Pro Yoga Mat",
+        category: "sports",
+        price: 1299,
+        mrp: 1799,
+        rating: 4.5,
+        reviews: 1190,
+        tag: "Fitness Pick",
+        stock: 24,
+        etaDays: 1,
+        image: "https://loremflickr.com/640/480/yoga?lock=131"
+    },
+    {
+        id: 32,
+        name: "Kashmir Willow Cricket Bat",
+        category: "sports",
+        price: 2299,
+        mrp: 3199,
+        rating: 4.4,
+        reviews: 840,
+        tag: "Match Ready",
+        stock: 13,
+        etaDays: 2,
+        image: "https://loremflickr.com/640/480/cricket?lock=132"
+    },
+    {
+        id: 33,
+        name: "Adjustable Dumbbell Set 20kg",
+        category: "sports",
+        price: 4999,
+        mrp: 6999,
+        rating: 4.5,
+        reviews: 650,
+        tag: "Gym At Home",
+        stock: 6,
+        etaDays: 3,
+        image: "https://loremflickr.com/640/480/dumbbell?lock=133"
+    },
+    {
+        id: 34,
+        name: "Atomic Habits Paperback",
+        category: "books",
+        price: 399,
+        mrp: 599,
+        rating: 4.8,
+        reviews: 5800,
+        tag: "Best Seller",
+        stock: 34,
+        etaDays: 1,
+        image: "https://loremflickr.com/640/480/books?lock=134"
+    },
+    {
+        id: 35,
+        name: "The Psychology of Money",
+        category: "books",
+        price: 449,
+        mrp: 699,
+        rating: 4.7,
+        reviews: 4900,
+        tag: "Reader Choice",
+        stock: 27,
+        etaDays: 1,
+        image: "https://loremflickr.com/640/480/money?lock=135"
+    },
+    {
+        id: 36,
+        name: "Rich Dad Poor Dad",
+        category: "books",
+        price: 349,
+        mrp: 549,
+        rating: 4.6,
+        reviews: 5100,
+        tag: "Classic Read",
+        stock: 31,
+        etaDays: 1,
+        image: "https://loremflickr.com/640/480/reading?lock=136"
+    },
+    {
+        id: 37,
+        name: "Car Vacuum Cleaner",
+        category: "automotive",
+        price: 1699,
+        mrp: 2499,
+        rating: 4.3,
+        reviews: 780,
+        tag: "Car Care",
+        stock: 17,
+        etaDays: 2,
+        image: "https://loremflickr.com/640/480/car?lock=137"
+    },
+    {
+        id: 38,
+        name: "ISI Full Face Helmet",
+        category: "automotive",
+        price: 2199,
+        mrp: 3099,
+        rating: 4.5,
+        reviews: 1120,
+        tag: "Rider Safety",
+        stock: 19,
+        etaDays: 2,
+        image: "https://loremflickr.com/640/480/helmet?lock=138"
+    },
+    {
+        id: 39,
+        name: "Bike Phone Holder",
+        category: "automotive",
+        price: 699,
+        mrp: 999,
+        rating: 4.2,
+        reviews: 640,
+        tag: "Travel Utility",
+        stock: 29,
+        etaDays: 2,
+        image: "https://loremflickr.com/640/480/motorcycle?lock=139"
     }
 ];
+
+const CATEGORY_OPTIONS = ["electronics", "accessories", "home", "fashion", "beauty", "grocery", "toys", "sports", "books", "automotive"];
 
 const CART_KEY = "novacart.cart";
 const USER_KEY = "novacart.user";
@@ -1820,13 +2225,16 @@ function createProductCard(product) {
     const categoryLabel = formatLabel(product.category);
     const discountPercent = getDiscountPercent(product);
     const stockMeta = getStockMeta(product.stock);
+    const imageMarkup = product.image
+        ? `<img class="product-photo" src="${product.image}" alt="${product.name}" loading="lazy" decoding="async" referrerpolicy="no-referrer">`
+        : `<span class="visual-initial">${initials}</span>`;
 
     const card = document.createElement("article");
     card.className = "product-card fade-in";
     card.innerHTML = `
         <div class="product-visual ${product.category}">
+            ${imageMarkup}
             <span class="tag">${product.tag}</span>
-            <span class="visual-initial">${initials}</span>
         </div>
         <div class="product-head">
             <h3>${product.name}</h3>
@@ -1917,7 +2325,7 @@ function applyCatalogParamsFromQuery() {
     }
 
     if (categoryFilter instanceof HTMLSelectElement) {
-        const allowedCategories = ["all", "electronics", "accessories", "home"];
+        const allowedCategories = ["all", ...CATEGORY_OPTIONS];
         if (allowedCategories.includes(category)) {
             categoryFilter.value = category;
         }
@@ -1943,7 +2351,7 @@ function applyCatalogParamsFromQuery() {
         }
 
         if (scopeField instanceof HTMLSelectElement) {
-            const allowedCategories = ["all", "electronics", "accessories", "home"];
+            const allowedCategories = ["all", ...CATEGORY_OPTIONS];
             if (allowedCategories.includes(category)) {
                 scopeField.value = category;
             }
