@@ -1383,14 +1383,8 @@ button,
 `;
 
 function injectGlobalStyles() {
-    if (document.getElementById("novacart-inline-styles")) {
-        return;
-    }
-
-    const styleTag = document.createElement("style");
-    styleTag.id = "novacart-inline-styles";
-    styleTag.textContent = GLOBAL_STYLES;
-    document.head.appendChild(styleTag);
+    // Disabled to allow external style.css
+    return;
 }
 
 const PRODUCTS = [
