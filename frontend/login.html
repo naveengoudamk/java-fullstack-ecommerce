@@ -40,7 +40,13 @@
                 <a href="products.html">Products</a>
                 <a class="active-link" href="login.html">Login</a>
             </nav>
-            <a href="products.html#cart-panel" class="cart-pill">Cart <span data-cart-count>0</span></a>
+            <div class="header-actions" style="display: flex; gap: 10px; align-items: center;">
+                <button id="themeToggleBtn" class="cart-pill" aria-label="Toggle Theme"
+                    style="cursor: pointer; padding: 6px 10px;" title="Toggle Dark/Light Mode">
+                    <span id="themeIcon">☀️</span>
+                </button>
+                <a href="products.html#cart-panel" class="cart-pill">Cart <span data-cart-count>0</span></a>
+            </div>
         </div>
         <nav class="category-bar">
             <a href="index.html">Home</a>

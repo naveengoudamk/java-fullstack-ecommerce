@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="app.js" defer></script>
 </head>
+
 <body class="page-home">
     <header class="site-header">
         <div class="header-top">
@@ -29,7 +31,8 @@
                     <option value="books">Books</option>
                     <option value="automotive">Automotive</option>
                 </select>
-                <input type="search" name="q" placeholder="Search for products, brands and more" aria-label="Search products">
+                <input type="search" name="q" placeholder="Search for products, brands and more"
+                    aria-label="Search products">
                 <button type="submit" class="search-btn">Search</button>
             </form>
             <nav class="nav-links">
@@ -37,7 +40,13 @@
                 <a href="products.html">Products</a>
                 <a href="login.html">Login</a>
             </nav>
-            <a href="products.html#cart-panel" class="cart-pill">Cart <span data-cart-count>0</span></a>
+            <div class="header-actions" style="display: flex; gap: 10px; align-items: center;">
+                <button id="themeToggleBtn" class="cart-pill" aria-label="Toggle Theme"
+                    style="cursor: pointer; padding: 6px 10px;" title="Toggle Dark/Light Mode">
+                    <span id="themeIcon">☀️</span>
+                </button>
+                <a href="products.html#cart-panel" class="cart-pill">Cart <span data-cart-count>0</span></a>
+            </div>
         </div>
         <nav class="category-bar">
             <a class="active-link" href="index.html">Home</a>
@@ -179,4 +188,5 @@
         <p>NovaCart | Secure checkout | Friendly support</p>
     </footer>
 </body>
+
 </html>

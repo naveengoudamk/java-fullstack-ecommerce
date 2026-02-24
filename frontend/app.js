@@ -2730,6 +2730,57 @@ function setupLoginForm() {
     });
 }
 
+(function initTheme() {
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    if (currentTheme === 'dark') {
+        const link = document.createElement('link');
+        link.id = 'dark-theme-style';
+        link.rel = 'stylesheet';
+        link.href = 'dark-theme.css';
+        document.head.appendChild(link);
+    }
+})();
+
+function setupThemeToggle() {
+    const toggleBtn = document.getElementById('themeToggleBtn');
+    const themeIcon = document.getElementById('themeIcon');
+    if (!toggleBtn || !themeIcon) return;
+
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    if (currentTheme === 'dark') {
+        themeIcon.textContent = '☀️';
+        toggleBtn.setAttribute('title', 'Switch to Light Mode');
+    } else {
+        themeIcon.textContent = '🌙';
+        toggleBtn.setAttribute('title', 'Switch to Dark Mode');
+    }
+
+    toggleBtn.addEventListener('click', () => {
+        const theme = localStorage.getItem('theme') || 'light';
+        const newTheme = theme === 'dark' ? 'light' : 'dark';
+        localStorage.setItem('theme', newTheme);
+
+        if (newTheme === 'dark') {
+            if (!document.getElementById('dark-theme-style')) {
+                const link = document.createElement('link');
+                link.id = 'dark-theme-style';
+                link.rel = 'stylesheet';
+                link.href = 'dark-theme.css';
+                document.head.appendChild(link);
+            }
+            themeIcon.textContent = '☀️';
+            toggleBtn.setAttribute('title', 'Switch to Light Mode');
+        } else {
+            const darkStyle = document.getElementById('dark-theme-style');
+            if (darkStyle) {
+                darkStyle.remove();
+            }
+            themeIcon.textContent = '🌙';
+            toggleBtn.setAttribute('title', 'Switch to Dark Mode');
+        }
+    });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     injectGlobalStyles();
     setupGlobalSearch();
@@ -2738,4 +2789,5 @@ document.addEventListener("DOMContentLoaded", () => {
     setupCatalogInteractions();
     setupDealCountdown();
     setupLoginForm();
+    setupThemeToggle();
 });
