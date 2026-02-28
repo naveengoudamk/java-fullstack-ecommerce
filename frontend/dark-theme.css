@@ -12,10 +12,10 @@
     --text-strong: #ffffff;
     --text: #a0aec0;
     --muted: #718096;
-    --primary: #3b82f6; 
+    --primary: #3b82f6;
     --primary-strong: #60a5fa;
     --primary-soft: rgba(59, 130, 246, 0.15);
-    --accent: #ec4899; 
+    --accent: #ec4899;
     --accent-soft: rgba(236, 72, 153, 0.15);
     --mint: #10b981;
     --border: rgba(255, 255, 255, 0.08);
@@ -25,35 +25,111 @@
     --focus-ring: 0 0 0 3px rgba(59, 130, 246, 0.5);
 }
 
+@keyframes auroraGradientDark {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    50% {
+        background-position: 100% 100%;
+    }
+
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+@keyframes floatOrbDark {
+    0% {
+        transform: translateY(0) translateX(0) scale(1);
+    }
+
+    33% {
+        transform: translateY(-30px) translateX(20px) scale(1.05);
+    }
+
+    66% {
+        transform: translateY(20px) translateX(-20px) scale(0.95);
+    }
+
+    100% {
+        transform: translateY(0) translateX(0) scale(1);
+    }
+}
+
 body {
     background: var(--bg-base);
-    background-image: 
-        radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.12), transparent 40%),
-        radial-gradient(circle at 85% 30%, rgba(236, 72, 153, 0.08), transparent 40%),
-        radial-gradient(circle at 50% 90%, rgba(16, 185, 129, 0.05), transparent 40%);
+    background-image:
+        radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.2), transparent 50%),
+        radial-gradient(circle at 85% 30%, rgba(236, 72, 153, 0.15), transparent 50%),
+        radial-gradient(circle at 50% 90%, rgba(16, 185, 129, 0.1), transparent 50%);
+    background-size: 150% 150% !important;
+    animation: auroraGradientDark 20s ease infinite !important;
     color: var(--text) !important;
     font-family: "Outfit", sans-serif;
+    transition: background 0.5s ease;
 }
 
-body::before { background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 68%) !important; }
-body::after { background: radial-gradient(circle, rgba(236, 72, 153, 0.15) 0%, transparent 72%) !important; }
+body::before {
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, transparent 68%) !important;
+    filter: blur(80px) !important;
+    animation: floatOrbDark 12s ease-in-out infinite !important;
+}
 
-.site-header, .hero-copy, .hero-panel, .section-block, .auth-card, .cart-panel, .product-card, .feature-card, .idea-card, .testimonial-card {
-    background: var(--surface) !important;
-    border: 1px solid var(--border) !important;
-    backdrop-filter: blur(28px) !important;
-    -webkit-backdrop-filter: blur(28px) !important;
-    box-shadow: var(--shadow-card) !important;
+body::after {
+    background: radial-gradient(circle, rgba(236, 72, 153, 0.25) 0%, transparent 72%) !important;
+    filter: blur(80px) !important;
+    animation: floatOrbDark 15s ease-in-out infinite reverse !important;
+}
+
+.site-header,
+.hero-copy,
+.hero-panel,
+.section-block,
+.auth-card,
+.cart-panel,
+.product-card,
+.feature-card,
+.idea-card,
+.testimonial-card {
+    background: linear-gradient(145deg, rgba(18, 24, 38, 0.8), rgba(18, 24, 38, 0.4)) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(40px) !important;
+    -webkit-backdrop-filter: blur(40px) !important;
+    box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.05), var(--shadow-card) !important;
     color: var(--text) !important;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
 }
 
-.hero-copy, .hero-panel, .section-block, .auth-card, .cart-panel, .product-card, .feature-card, .idea-card, .testimonial-card {
+.product-card:hover {
+    transform: translateY(-12px) scale(1.03) perspective(1000px) rotateX(2deg) rotateY(-2deg) !important;
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8), 0 0 40px rgba(59, 130, 246, 0.3) !important;
+    border-color: rgba(59, 130, 246, 0.5) !important;
+    z-index: 10;
+}
+
+.hero-copy,
+.hero-panel,
+.section-block,
+.auth-card,
+.cart-panel,
+.product-card,
+.feature-card,
+.idea-card,
+.testimonial-card {
     border-radius: var(--radius-xl) !important;
 }
 
-h1, h2, h3, .brand, .testimonial-card strong, .deal-title, .metric-card h3 {
+h1,
+h2,
+h3,
+.brand,
+.testimonial-card strong,
+.deal-title,
+.metric-card h3 {
     background: linear-gradient(135deg, #ffffff 20%, #9ca3af 100%) !important;
     -webkit-background-clip: text !important;
+    background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
     color: #ffffff !important;
     font-family: "Sora", sans-serif !important;
@@ -78,11 +154,27 @@ h1, h2, h3, .brand, .testimonial-card strong, .deal-title, .metric-card h3 {
     background: rgba(255, 255, 255, 0.08) !important;
 }
 
-.btn-primary, .search-btn, button[type="submit"] {
+@keyframes buttonShineDark {
+    0% {
+        left: -100%;
+    }
+
+    20% {
+        left: 200%;
+    }
+
+    100% {
+        left: 200%;
+    }
+}
+
+.btn-primary,
+.search-btn,
+button[type="submit"] {
     background: linear-gradient(135deg, #3b82f6, #ec4899) !important;
     color: #fff !important;
     border: none !important;
-    box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3) !important;
+    box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3), inset 0 2px 0 rgba(255, 255, 255, 0.2) !important;
     position: relative;
     overflow: hidden;
     z-index: 1;
@@ -91,23 +183,47 @@ h1, h2, h3, .brand, .testimonial-card strong, .deal-title, .metric-card h3 {
     font-weight: 600;
 }
 
-.btn-primary::before, .search-btn::before, button[type="submit"]::before {
+.btn-primary::before,
+.search-btn::before,
+button[type="submit"]::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: linear-gradient(135deg, #ec4899, #3b82f6) !important;
     opacity: 0;
     z-index: -1;
     transition: opacity 0.4s ease;
 }
 
-.btn-primary:hover::before, .search-btn:hover::before, button[type="submit"]:hover::before {
+.btn-primary::after,
+.search-btn::after,
+button[type="submit"]::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: skewX(-20deg);
+    animation: buttonShineDark 4s ease-in-out infinite;
+    z-index: 2;
+}
+
+.btn-primary:hover::before,
+.search-btn:hover::before,
+button[type="submit"]:hover::before {
     opacity: 1;
 }
 
-.btn-primary:hover, .search-btn:hover, button[type="submit"]:hover {
-    transform: translateY(-3px) scale(1.02) !important;
-    box-shadow: 0 10px 25px rgba(236, 72, 153, 0.5), 0 0 20px rgba(59, 130, 246, 0.4) !important;
+.btn-primary:hover,
+.search-btn:hover,
+button[type="submit"]:hover {
+    transform: translateY(-4px) scale(1.04) !important;
+    box-shadow: 0 15px 35px rgba(236, 72, 153, 0.6), 0 0 30px rgba(59, 130, 246, 0.5) !important;
 }
 
 .btn-secondary {
@@ -130,7 +246,8 @@ h1, h2, h3, .brand, .testimonial-card strong, .deal-title, .metric-card h3 {
     overflow: hidden;
 }
 
-.nav-links a:hover, .nav-links .active-link {
+.nav-links a:hover,
+.nav-links .active-link {
     background: var(--primary-soft) !important;
     color: #fff !important;
     border-color: rgba(59, 130, 246, 0.3) !important;
@@ -149,20 +266,23 @@ h1, h2, h3, .brand, .testimonial-card strong, .deal-title, .metric-card h3 {
     border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
-input, select {
+input,
+select {
     background: rgba(0, 0, 0, 0.3) !important;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     color: #fff !important;
     transition: all 0.3s ease !important;
 }
 
-input:focus, select:focus {
+input:focus,
+select:focus {
     background: rgba(0, 0, 0, 0.5) !important;
     border-color: #3b82f6 !important;
     box-shadow: var(--shadow-glow) !important;
 }
 
-.product-visual, .product-visual[class*=" "] {
+.product-visual,
+.product-visual[class*=" "] {
     background: rgba(255, 255, 255, 0.03) !important;
     border: 1px solid rgba(255, 255, 255, 0.05) !important;
     border-radius: 18px !important;
@@ -187,6 +307,7 @@ input:focus, select:focus {
     padding: 2px;
     background: linear-gradient(135deg, rgba(59, 130, 246, 0.5), rgba(236, 72, 153, 0.5));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     opacity: 0;
@@ -239,9 +360,17 @@ input:focus, select:focus {
 }
 
 @keyframes pulseGlow {
-    0% { box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.4); }
-    70% { box-shadow: 0 0 0 6px rgba(236, 72, 153, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(236, 72, 153, 0); }
+    0% {
+        box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 6px rgba(236, 72, 153, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(236, 72, 153, 0);
+    }
 }
 
 .location-pill {
@@ -249,7 +378,9 @@ input:focus, select:focus {
     border-color: rgba(255, 255, 255, 0.08) !important;
 }
 
-.location-label { color: var(--muted) !important; }
+.location-label {
+    color: var(--muted) !important;
+}
 
 .metric-card {
     background: rgba(0, 0, 0, 0.3) !important;
@@ -257,6 +388,7 @@ input:focus, select:focus {
     backdrop-filter: blur(10px) !important;
     transition: transform 0.3s ease, border-color 0.3s ease !important;
 }
+
 .metric-card:hover {
     transform: translateY(-4px) !important;
     border-color: rgba(59, 130, 246, 0.4) !important;
@@ -268,11 +400,14 @@ input:focus, select:focus {
     backdrop-filter: blur(15px) !important;
     transition: transform 0.3s ease !important;
 }
+
 .deal-banner:hover {
     transform: scale(1.02) !important;
 }
 
-.deal-banner p { color: #e2e8f0 !important; }
+.deal-banner p {
+    color: #e2e8f0 !important;
+}
 
 .category-bar {
     background: rgba(10, 15, 24, 0.8) !important;
@@ -280,13 +415,16 @@ input:focus, select:focus {
     border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
     backdrop-filter: blur(15px) !important;
 }
+
 .category-bar a {
     background: rgba(255, 255, 255, 0.03) !important;
     border-color: rgba(255, 255, 255, 0.05) !important;
     color: var(--text) !important;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
 }
-.category-bar a:hover, .category-bar .active-link {
+
+.category-bar a:hover,
+.category-bar .active-link {
     background: var(--primary-soft) !important;
     color: #fff !important;
     border-color: rgba(59, 130, 246, 0.5) !important;
@@ -294,8 +432,13 @@ input:focus, select:focus {
     transform: translateY(-2px) !important;
 }
 
-.price { color: #fff !important; }
-.mrp { color: var(--muted) !important; }
+.price {
+    color: #fff !important;
+}
+
+.mrp {
+    color: var(--muted) !important;
+}
 
 .tag {
     background: linear-gradient(135deg, #ec4899, #f59e0b) !important;
@@ -317,11 +460,14 @@ input:focus, select:focus {
     border-color: rgba(255, 255, 255, 0.08) !important;
     transition: transform 0.2s ease !important;
 }
+
 .cart-item:hover {
     transform: scale(1.02) !important;
 }
 
-.cart-item strong { color: #fff !important; }
+.cart-item strong {
+    color: #fff !important;
+}
 
 /* Enhancing Eyebrows */
 .eyebrow {
@@ -333,38 +479,67 @@ input:focus, select:focus {
 
 /* Base Animations added to elements in viewport */
 @keyframes slideUpFade {
-    0% { opacity: 0; transform: translateY(30px) scale(0.95); }
-    100% { opacity: 1; transform: translateY(0) scale(1); }
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 .product-card {
     animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) both !important;
 }
 
-.product-card:nth-child(1) { animation-delay: 0.05s !important; }
-.product-card:nth-child(2) { animation-delay: 0.1s !important; }
-.product-card:nth-child(3) { animation-delay: 0.15s !important; }
-.product-card:nth-child(4) { animation-delay: 0.2s !important; }
-.product-card:nth-child(5) { animation-delay: 0.25s !important; }
-.product-card:nth-child(6) { animation-delay: 0.3s !important; }
+.product-card:nth-child(1) {
+    animation-delay: 0.05s !important;
+}
+
+.product-card:nth-child(2) {
+    animation-delay: 0.1s !important;
+}
+
+.product-card:nth-child(3) {
+    animation-delay: 0.15s !important;
+}
+
+.product-card:nth-child(4) {
+    animation-delay: 0.2s !important;
+}
+
+.product-card:nth-child(5) {
+    animation-delay: 0.25s !important;
+}
+
+.product-card:nth-child(6) {
+    animation-delay: 0.3s !important;
+}
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
 }
+
 ::-webkit-scrollbar-track {
     background: #06090f;
 }
+
 ::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.15);
     border-radius: 10px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.3);
 }
 
-.field { color: #e2e8f0 !important; }
+.field {
+    color: #e2e8f0 !important;
+}
 
 .form-message {
     text-align: center;
