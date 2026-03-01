@@ -955,78 +955,8 @@ button,
     padding: 10px 20px 24px;
 }
 
-#toast-container {
-    position: fixed;
-    right: 16px;
-    bottom: 16px;
-    z-index: 90;
-    display: grid;
-    gap: 8px;
-}
+/* Notifications removed */
 
-.toast {
-    min-width: 240px;
-    max-width: 320px;
-    border-radius: 12px;
-    padding: 10px 12px;
-    font-size: 0.86rem;
-    font-weight: 600;
-    border: 1px solid rgba(80, 113, 174, 0.24);
-    background: rgba(255, 255, 255, 0.94);
-    color: #1f3f74;
-    box-shadow: 0 14px 26px rgba(22, 46, 88, 0.16);
-    opacity: 0;
-    transform: translateY(6px);
-    transition: opacity 0.25s ease, transform 0.25s ease;
-}
-
-.toast.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.toast.success {
-    border-color: rgba(30, 154, 106, 0.34);
-    color: #0f744f;
-}
-
-.toast.error {
-    border-color: rgba(202, 67, 95, 0.34);
-    color: #a2293d;
-}
-
-.fade-in {
-    animation: fadeUp 0.52s ease both;
-}
-
-.hero-copy,
-.hero-panel,
-.section-block,
-.auth-card {
-    animation: riseIn 0.56s ease both;
-}
-
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(12px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes riseIn {
-    from {
-        opacity: 0;
-        transform: translateY(14px) scale(0.99);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
 
 @media (max-width: 1080px) {
     .promo-strip,
@@ -2055,29 +1985,9 @@ function getDeliveryLabel(etaDays, bulky = false) {
     return `Delivery in ${etaDays} days`;
 }
 
+// Notifications removed — showToast is intentionally a no-op
 function showToast(message, tone = "info") {
-    let container = document.getElementById("toast-container");
-    if (!container) {
-        container = document.createElement("div");
-        container.id = "toast-container";
-        document.body.appendChild(container);
-    }
-
-    const toast = document.createElement("div");
-    toast.className = `toast ${tone}`;
-    toast.textContent = message;
-    container.appendChild(toast);
-
-    requestAnimationFrame(() => {
-        toast.classList.add("show");
-    });
-
-    setTimeout(() => {
-        toast.classList.remove("show");
-        setTimeout(() => {
-            toast.remove();
-        }, 250);
-    }, 2200);
+    // Notifications disabled
 }
 
 function getCartLineItems(cart) {
