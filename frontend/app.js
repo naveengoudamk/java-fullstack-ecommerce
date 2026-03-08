@@ -2641,8 +2641,10 @@ function setupLoginForm() {
 }
 
 (function initTheme() {
+    // The inline <script> in <head> may have already injected dark-theme.css
+    // before the page rendered, so only inject if it isn't there yet.
     const currentTheme = localStorage.getItem('theme') || 'light';
-    if (currentTheme === 'dark') {
+    if (currentTheme === 'dark' && !document.getElementById('dark-theme-style')) {
         const link = document.createElement('link');
         link.id = 'dark-theme-style';
         link.rel = 'stylesheet';
